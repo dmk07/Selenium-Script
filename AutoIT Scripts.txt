@@ -1,0 +1,92 @@
+
+	AutoIT Features:
+
+		1.	AutoIT Window Info
+
+			It is used to inspect properties of a window element.
+
+		2.	SciTE Script Editor
+			
+			It is a programming editor which is used to write script
+			to automate window GUI operations.	
+
+
+		3.	Run Script
+
+			It is used to run AutoIT scripts.
+
+		4.	Compile Script to .exe
+
+			It converts AutoIT code to .exe file, which you can 
+			call from java/Selenium testCase.
+
+------------------------------------------------------------------------------
+
+AutoIT Commands:
+
+Run : it invokes specified windows App.
+
+sleep(timeout in millis) : it suspends autoIT program execution for specified
+no. of milli seconds.
+
+winwaitActive: It makes AutoIT to wait until the specified window is active
+
+winClose : It close the specified window
+
+send : It is used to send keystrokes to the active control.
+
+controlsend : It is used to send data to a specified control.
+
+controlclick : It is used to perform click operation on the specified control.
+
+
+------------------------------------------------------------------------------
+How to call .exe file from Java
+
+	Runtime.getRuntime().exec(".exefilepath")
+
+--------------------------------------------------------------------------------
+
+A Sample Selenium Script to handle Windows elements
+-------------------------------------------------------------------------------
+
+	System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.get("http://selenium.dev");
+		
+		driver.findElement(By.linkText("Downloads")).click();
+		driver.findElement(By.linkText("3.141.59")).click();
+		
+		Runtime.getRuntime().exec("c:\\test\\filedownload.exe");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

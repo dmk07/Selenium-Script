@@ -1,0 +1,91 @@
+Scriptt to capture Current Window ID using getWindowHandle()
+----------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://gmail.com");		
+		String currentwindowid = driver.getWindowHandle();
+		System.out.println(currentwindowid);
+----------------------------------------------------------------------------------
+Script to capture multiple Browser window Ids using getWindowHandles()
+----------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://gmail.com");			
+		driver.findElement(By.linkText("Help")).click();
+		Set<String> allwindows =  driver.getWindowHandles();		
+		System.out.println(allwindows);
+---------------------------------------------------------------------------------
+Script to segregate window ids
+---------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://gmail.com");			
+		driver.findElement(By.linkText("Help")).click();
+		Set<String> allwindows =  driver.getWindowHandles();		
+		System.out.println(allwindows);
+		
+		Object[]  windows = allwindows.toArray();
+		String window1 =  windows[0].toString();
+		String window2 =  windows[1].toString();
+		
+		System.out.println(window1);
+		System.out.println(window2);
+-----------------------------------------------------------------------------------------
+Example for switching driver focus between windows
+------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://gmail.com");			
+		driver.findElement(By.linkText("Help")).click();
+		Set<String> allwindows =  driver.getWindowHandles();		
+			
+		Object[]  windows = allwindows.toArray();
+		String window1 =  windows[0].toString();
+		String window2 =  windows[1].toString();
+		
+		System.out.println(driver.getTitle());
+				
+		driver.switchTo().window(window2);		
+		System.out.println(driver.getTitle());
+		
+		driver.switchTo().window(window1);
+		System.out.println(driver.getTitle());
+------------------------------------------------------------------------------------
+Another Example to move driver focus to new window/tab
+-----------------------------------------------------------------------------------
+
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://gmail.com");			
+		driver.findElement(By.linkText("Help")).click();
+		Set<String> allwindows =  driver.getWindowHandles();		
+			
+		Object[]  windows = allwindows.toArray();
+		String window1 =  windows[0].toString();
+		String window2 =  windows[1].toString();
+		
+		driver.switchTo().window(window2);
+		driver.findElement(By.linkText("Community")).click();
+------------------------------------------------------------------------------------------
+
+

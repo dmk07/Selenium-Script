@@ -1,0 +1,72 @@
+Example :findElement()
+-----------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://primusbank.qedgetech.com");
+		
+		driver.findElement(By.linkText("Site Map")).click();
+		driver.findElement(By.linkText("Home")).click();
+		
+		driver.findElement(By.linkText("Demo")).click();
+------------------------------------------------------------------------------------------------
+Example: findElements() using linkText
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://primusbank.qedgetech.com");
+		
+		driver.findElement(By.linkText("Site Map")).click();
+		
+		List<WebElement> links = driver.findElements(By.linkText("Home"));
+		
+		System.out.println(links.size());
+		
+		links.get(1).click();
+----------------------------------------------------------------------------------
+example: findElements() using tagname
+------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://primusbank.qedgetech.com");
+		
+		driver.findElement(By.linkText("Site Map")).click();
+		
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+		System.out.println(links.size());
+		
+		for(int i=0;i<links.size();i++)
+		{
+			System.out.println(links.get(i).getText());
+		}
+--------------------------------------------------------------------------------
+Example : findElements() using partialLinkText
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://primusbank.qedgetech.com");
+		
+		driver.findElement(By.linkText("Site Map")).click();
+		
+		List<WebElement> links = driver.findElements(By.partialLinkText("Banking"));
+		System.out.println(links.size());
+		
+		for(int i=0;i<links.size();i++)
+		{
+			System.out.println(links.get(i).getText());
+		}
+------------------------------------------------------------------------------
+
+		
+
+
+
+
+

@@ -1,0 +1,55 @@
+Script to launch Chrome Browser
+-----------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "c:\\chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://faceebook.com");
+---------------------------------------------------------------------------------
+Script to launch Firefox Browser & Basic Browser navigation
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.get("http://facebook.com");
+		driver.navigate().to("http://google.com");
+		driver.navigate().back();
+		driver.navigate().forward();
+		driver.close();
+--------------------------------------------------------------------------------
+Script to delete browser coockies and maximize Window
+---------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://gmail.com");
+----------------------------------------------------------------------------------
+Script to capture title of the page
+---------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://facebook.com");
+		
+		String pgtitle = driver.getTitle();
+		System.out.println(pgtitle);
+		
+		driver.close();
+----------------------------------------------------------------------------------
+Script to capture URL of the Page
+----------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://facebook.com");
+		
+		driver.findElement(By.linkText("Messenger")).click();
+		String pgurl = driver.getCurrentUrl();
+		System.out.println(pgurl);
+------------------------------------------------------------------------------------------
+
+

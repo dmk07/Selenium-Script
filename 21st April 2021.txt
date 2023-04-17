@@ -1,0 +1,18 @@
+A Sample testng.xml file code for creating Test Suite
+-------------------------------------------------------------------------------
+<suite name="GMail Test Suite">
+
+	<test name="GMail Send Mail TestCase">	
+		<classes>
+			<class name="demos.SendMailTest"></class>			
+		</classes>	
+	</test>
+
+	<test name="GMail Receive Mail TestCase">		
+		<classes>
+			<class name="demos.ReceiveMailTest"></class>
+		</classes>	
+	</test>
+
+</suite>
+---------------------------------------------------------------------------------

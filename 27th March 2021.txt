@@ -1,0 +1,32 @@
+Example: OrangeHRM Login Script
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://orangehrm.qedgetech.com");
+		
+		driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+		driver.findElement(By.name("txtPassword")).sendKeys("Qedge123!@#");
+		driver.findElement(By.className("button")).click();		
+		
+		driver.findElement(By.partialLinkText("Welcome")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.linkText("Logout")).click();
+		driver.close();
+---------------------------------------------------------------------------------
+Example: Google Selenium Search Script
+----------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://google.com");
+		
+		driver.findElement(By.name("q")).sendKeys("Selenium");
+		Thread.sleep(5000);
+		driver.findElement(By.name("btnK")).click();
+
+
+

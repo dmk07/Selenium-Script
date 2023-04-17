@@ -1,0 +1,97 @@
+Script to check/uncheck checbox element
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://spicejet.com");
+		
+		WebElement chkbox = driver.findElement(By.id("ctl00_mainContent_chk_StudentDiscount"));
+		
+		chkbox.click();
+		Thread.sleep(2000);
+		chkbox.click();
+-----------------------------------------------------------------------------------
+Script to select checkox if it is not selected
+--------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://spicejet.com");
+		
+		WebElement chkbox = driver.findElement(By.id("ctl00_mainContent_chk_StudentDiscount"));
+		
+		if(!chkbox.isSelected())
+		{
+			chkbox.click();
+		}
+--------------------------------------------------------------------------------------
+Script to select a RadioButton
+---------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://spicejet.com");
+		driver.findElement(By.xpath("//input[@value='RoundTrip']")).click();
+------------------------------------------------------------------------------------------
+Script to capture and print all radiobutton labels
+--------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://spicejet.com");
+		List<WebElement> traveltype = driver.findElement(By.id("travelOptions")).findElements(By.tagName("label"));
+		System.out.println(traveltype.size());
+		
+		for(int i=0;i<traveltype.size();i++)
+		{
+			System.out.println(traveltype.get(i).getText());
+		}
+----------------------------------------------------------------------------------------
+Script to Count No. of Rows & Cols in a HTML Table
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("https://www.railyatri.in/time-table");
+		WebElement timetable = driver.findElement(By.tagName("table"));
+		List<WebElement>  rows = timetable.findElements(By.tagName("tr"));
+		System.out.println("No. of Trains: "+(rows.size()-1));
+		
+		List<WebElement> cols =  rows.get(1).findElements(By.tagName("td"));
+		System.out.println("No. of Columns: "+cols.size());
+-----------------------------------------------------------------------------------
+Script to capture data present in HTML Table
+-------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("https://www.railyatri.in/time-table");
+		WebElement timetable = driver.findElement(By.tagName("table"));
+		List<WebElement>  rows = timetable.findElements(By.tagName("tr"));
+		for(int i=1;i<rows.size();i++)
+		{
+			List<WebElement> cols = rows.get(i).findElements(By.tagName("td"));
+			String trainno = cols.get(0).getText();
+			String trainname = cols.get(1).getText();
+			System.out.println(trainno+"  "+trainname);
+					
+		}
+-------------------------------------------------------------------------------

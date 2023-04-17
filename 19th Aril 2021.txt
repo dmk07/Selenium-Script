@@ -1,0 +1,163 @@
+-----------------------------------------------------------------------------------
+Executing multiple Test  methods in a TestNG Class
+-------------------------------------------------------------------------------
+public class GMail_Test 
+{
+
+	
+	@Test
+	public void sendMail()
+	{
+		System.out.println("Send Mail Test");
+	}
+	
+	@Test
+	public void receiveMail()
+	{
+		System.out.println("Receive Mail Test");
+	}
+	
+}
+-------------------------------------------------------------------------------
+Controlling Test Execution Order using prioty Keyword
+-----------------------------------------------------------------------------
+
+public class GMail_Test 
+{
+
+	
+	@Test(priority=0)
+	public void sendMail()
+	{
+		System.out.println("Send Mail Test");
+	}
+	
+	@Test(priority=1)
+	public void receiveMail()
+	{
+		System.out.println("Receive Mail Test");
+	}
+	
+}
+---------------------------------------------------------------------------------------
+Skipping the Test method from test execution
+------------------------------------------------------------------------------
+public class GMail_Test 
+{
+	@Test
+	public void a()
+	{
+		System.out.println("This is a");
+	}
+	
+	@Test(enabled=true)
+	public void b()
+	{
+		System.out.println("This is b");
+	}
+	
+	@Test(enabled=false)
+	public void c()
+	{
+		System.out.println("This is c");
+	}
+	
+}
+--------------------------------------------------------------------------------
+Adding skip exception
+--------------------------------------------------------------------------------
+public class GMail_Test 
+{	
+	@Test
+	public void a()
+	{
+		System.out.println("This is a");
+	}			
+	@Test
+	public void b()
+	{
+		System.out.println("This is b");
+		if(true)
+		{
+			throw new SkipException("This Code execution suspended for some reason");
+		}
+	}	
+}
+----------------------------------------------------------------------------------
+@Before Method & @After Method
+-------------------------------------------------------------------------------
+public class GMail_Test 
+{
+	@Test
+	public void sendMail()
+	{
+		System.out.println("Send Mail Test");
+	}	
+	@Test
+	public void receiveMail()
+	{
+		System.out.println("Receive Mail Test");
+	}	
+	@BeforeMethod
+	public void login()
+	{
+		System.out.println("GMail Login");
+	}	
+	@AfterMethod
+	public void logout()
+	{
+		System.out.println("GMail Logout");
+	}	
+}
+-----------------------------------------------------------------------------------------
+Example to understand all annotations execution order
+----------------------------------------------------------------------------------
+public class GMail_Test 
+{
+	@Test
+	public void sendMail()
+	{
+		System.out.println("Send Mail Test");
+	}	
+	@Test
+	public void receiveMail()
+	{
+		System.out.println("Receive Mail Test");
+	}	
+	@BeforeMethod
+	public void login()
+	{
+		System.out.println("GMail Login");
+	}	
+	@AfterMethod
+	public void logout()
+	{
+		System.out.println("GMail Logout");
+	}	
+	
+	@BeforeTest
+	public void launchGMail()
+	{
+		System.out.println("Launch GMail App");
+	}
+	
+	@AfterTest
+	public void closeGMail()
+	{
+		System.out.println("Close GMail App");
+	}
+	
+	@BeforeSuite
+	public void invokeBrowser()
+	{
+		System.out.println("Open Browser");
+	}
+	
+	@AfterSuite
+	public void closeBrowser()
+	{
+		System.out.println("Close Browser");
+	}
+	
+}
+-----------------------------------------------------------------------------------------

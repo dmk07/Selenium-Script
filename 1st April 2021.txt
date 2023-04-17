@@ -1,0 +1,93 @@
+  ScScript to select a value from DropdownList
+----------------------------------------------------------------------------
+Sy		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://facebook.com");
+		driver.findElement(By.linkText("Create New Account")).click();
+		
+		WebElement dayelement = driver.findElement(By.id("day"));		
+		Select daylistbox = new Select(dayelement);		
+		daylistbox.selectByIndex(1);
+ 		
+		Select monthlistbox = new Select(driver.findElement(By.id("month")));  
+		monthlistbox.selectByVisibleText("May");
+		
+		Select yearlistbox = new Select(driver.findElement(By.id("year")));
+		yearlistbox.selectByValue("2020");
+-------------------------------------------------------------------------------------------
+HTML Code for CarListbox Example
+---------------------------------------------------------------------------------------------
+<label for="cars">Choose a car:</label>
+<select name="cars" id="cars">    
+  <option>Select</option> 
+  <option value="v">Volvo</option>
+  <option value="b">BMW</o ption>
+  <option value="m">Mercedes</option>
+  <option value="a">Audi A6. Rs. 54.42 - 59.42 Lakh* (Price in New Delhi)</option>
+</select> 
+
+----------------------------------------------------------------------------------
+Another Example to Select an item from DropDownList
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("file:///C:/Test/cars.html");
+		
+		WebElement carelement = driver.findElement(By.id("cars"));
+		Select carlistbox = new Select(carelement);
+		carlistbox.selectByIndex(1);
+		Thread.sleep(2000);
+		carlistbox.selectByVisibleText("BMW");
+		Thread.sleep(2000);
+		carlistbox.selectByValue("a");
+
+----------------------------------------------------------------------------------
+Script to Count No. of items in CarList box
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("file:///C:/Test/cars.html");
+		
+		WebElement carelement = driver.findElement(By.id("cars"));
+		Select carlistbox = new Select(carelement);
+		List<WebElement> carlist =  carlistbox.getOpti]]]]][ons();
+		System.out.println("Count of items: "+carlist.size());
+------------------------------------------------------------------------------
+Script to Read all items present in a DropDownList
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("file:///C:/Test/cars.html");
+		
+		WebElement carelement = driver.findElement(By.id("cars"));
+		Select carlistbox = new Select(carelement);
+		List<WebElement> carlist =  carlistbox.getOptions();
+		System.out.println("Count of items: "+carlist.size());
+		
+		for(int i=1;i<carlist.size()-1;i++)
+		{
+			String carname =  carlist.get(i).getText();
+			System.out.println(carname);
+		}
+-----------------------------------------------------------------------------------
+
+
+
+
+

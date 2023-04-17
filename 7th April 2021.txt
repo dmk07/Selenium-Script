@@ -1,0 +1,39 @@
+Script to Move Mouse Over Element/Right Click Element using Actions Class
+------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("https://www.snapdeal.com");
+		Actions act = new Actions(driver);
+		WebElement element = driver.findElement(By.xpath("//div[2]/ul/li[3]/a/span[2]"));
+		act.moveToElement(element);
+		act.build().perform();
+		
+		act.contextClick(driver.findElement(By.linkText("Smart TVs")));
+		act.build().perform();
+-----------------------------------------------------------------------------------------
+Script to Move Driver focus to Frame & Mouse Drag and Drop Operation
+-------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("https://jqueryui.com/");
+		driver.findElement(By.linkText("Droppable")).click();
+		
+		driver.switchTo().frame(driver.findElement(By.className("demo-frame")));
+		WebElement srcelement,trgelement;
+		srcelement = driver.findElement(By.id("draggable"));
+		trgelement = driver.findElement(By.id("droppable"));
+		
+		Actions act = new Actions(driver);
+		act.dragAndDrop(srcelement, trgelement);
+		act.build().perform();
+------------------------------------------------------------------------------
+		
+		

@@ -1,0 +1,48 @@
+AutoIT & Selenium DownLoad File Script
+------------------------------------------------------------------------------
+AutoIT code for FileDownLoad
+------------------------------------------------------------------------------
+WinWaitActive("Opening selenium-server-standalone-3.141.59.jar")
+Send("{TAB}")
+Send("{TAB}")
+Send("{ENTER}")
+
+Note: This AutoIT code we have convert to .exe File
+------------------------------------------------------------------------------
+Selenium Code for FileDownLoad
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("https://selenium.dev");
+		
+		driver.findElement(By.linkText("Downloads")).click();
+		driver.findElement(By.linkText("3.141.59")).click();;
+		
+		//Calling .exe File
+		Runtime.getRuntime().exec("downloadscript.exe");
+--------------------------------------------------------------------------------
+AutoIT code for FileUpload
+------------------------------------------------------------------------------
+WinWaitActive("File Upload")
+ControlSend("File Upload","","Edit1","C:\Test\sample.docx")
+ControlClick("File Upload","","Button1")
+
+Note: This code you have convert to .exe file
+------------------------------------------------------------------------------
+Selenium code for FileUpload
+-------------------------------------------------------------------------------
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("https://smallpdf.com/word-to-pdf");
+		
+		driver.findElement(By.xpath("//form/label/div/div[2]/div/button[1]/span")).click();
+		
+		Runtime.getRuntime().exec("fileupload.exe");
+--------------------------------------------------------------------------------
+

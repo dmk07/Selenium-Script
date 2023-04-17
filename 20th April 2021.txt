@@ -1,0 +1,53 @@
+TestNG_assertEquals()
+-------------------------------------------------------------------------------
+	@Test
+	public void test1()
+	{
+		String exptitle,acttitle;
+		exptitle="Google";		
+		acttitle="Google";		
+		Assert.assertEquals(acttitle, exptitle);		
+	}
+	
+	@Test
+	public void test2()
+	{
+		String exptitle,acttitle;
+		exptitle="Google";		
+		acttitle="GMail";		
+		Assert.assertEquals(acttitle, exptitle);		
+	}
+----------------------------------------------------------------------------------
+Assert_assertTrue()
+-------------------------------------------------------------------------------
+	@Test
+	public void test1()
+	{
+		boolean res = true;
+		Assert.assertTrue(res);	
+	}
+	
+	
+	@Test
+	public void test2()
+	{
+		boolean res = false;
+		Assert.assertTrue(res);	
+	}
+---------------------------------------------------------------------------------
+Assert_assertFalse()
+----------------------------------------------------------------------------------
+@Test
+	public void test1()
+	{
+		boolean res = false;
+		Assert.assertFalse(res);
+	}
+	
+	
+	@Test
+	public void test2()
+	{
+		boolean res = true;
+		Assert.assertFalse(res);	
+	}

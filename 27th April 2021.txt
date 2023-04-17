@@ -1,0 +1,215 @@
+Script using FileInputStream & FileOutputStream Classes
+------------------------------------------------------------------------------
+			FileInputStream fi = new FileInputStream("c:\\test\\testdata.xlsx");			
+			Workbook wb = new XSSFWorkbook(fi);
+			
+			wb.createSheet("MyNewSheet");
+			
+			FileOutputStream fo = new FileOutputStream("c:\\test\\outputdata.xlsx");
+			wb.write(fo);
+			
+			wb.close();
+			fi.close();
+			fo.close();
+------------------------------------------------------------------------------------
+Script to count no of rows in  XlSheet
+----------------------------------------------------------------------------------
+		File f = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		FileInputStream fi = new FileInputStream(f);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws1 = wb.getSheet("LoginData");
+		Sheet ws2 = wb.getSheet("EmpData");
+		
+		int ws1rowcount =  ws1.getLastRowNum();
+		int ws2rowcount = ws2.getLastRowNum();
+		
+		System.out.println("No. of Rows in Sheet1 :"+ws1rowcount);
+		System.out.println("No. of Rows in Sheet2 :"+ws2rowcount);
+		
+		wb.close();
+		fi.close();
+------------------------------------------------------------------------------------------
+Script to count no. of columns of a Row
+--------------------------------------------------------------------------------------------
+		File f = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		FileInputStream fi = new FileInputStream(f);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		Row row = ws.getRow(1);
+		int colcount = row.getLastCellNum();
+		System.out.println("No. of Coluns in row :"+colcount);
+				
+		wb.close();
+		fi.close();
+
+---------------------------------------------------------------------------------------------------
+Script to count Row wise count of columns in a XlSheet
+-----------------------------------------------------------------------------------------------------
+		File f = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		FileInputStream fi = new FileInputStream(f);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		int rowcount = ws.getLastRowNum();
+		for(int i=0;i<=rowcount;i++)
+		{
+			Row row = ws.getRow(i);
+			int colcount = row.getLastCellNum();
+			System.out.println("Row No: "+i+" Nol of Columns: "+colcount);
+		}
+		wb.close();
+		fi.close();
+
+-----------------------------------------------------------------------------
+Script to Read data from XlSheet Cell
+------------------------------------------------------------------------------
+		File f = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		FileInputStream fi = new FileInputStream(f);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		Row row = ws.getRow(1);
+		Cell c1 = row.getCell(0);
+		Cell c2 = row.getCell(1);
+		
+		String uid = c1.getStringCellValue();
+		String pwd = c2.getStringCellValue();
+		
+		System.out.println(uid+" "+pwd);
+				
+		wb.close();
+		fi.close();
+-----------------------------------------------------------------------------------
+Script to Read all rows data
+----------------------------------------------------------------------------
+		File f = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		FileInputStream fi = new FileInputStream(f);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("EmpData");
+		int rowcount = ws.getLastRowNum();
+		
+		for(int i=1;i<=rowcount;i++)
+		{
+			Row row = ws.getRow(i);
+			Cell c1 = row.getCell(0);
+			Cell c2 = row.getCell(1);
+			Cell c3 = row.getCell(2);
+			
+			String eno = c1.getStringCellValue();
+			String ename = c2.getStringCellValue();
+			double sal = c3.getNumericCellValue();
+			
+			System.out.println(eno+"  "+ename+"  "+sal);
+		}
+		
+		wb.close();
+		fi.close();
+-----------------------------------------------------------------------------------
+Script to handle Null pointer exception that occurs if not data present in XLsheet Cell
+---------------------------------------------------------------------------------------
+		File f = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		FileInputStream fi = new FileInputStream(f);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		Row row = ws.getRow(1);
+		
+		String data;
+		try 
+		{
+			Cell cell = row.getCell(2);
+			data = cell.getStringCellValue();			
+		} catch (Exception e) 
+		{
+			data = "";
+		}
+		System.out.println(data);	
+		
+		wb.close();
+		fi.close();
+------------------------------------------------------------------------------------
+Script to write data in XLSheet Cells
+-------------------------------------------------------------------------------
+		File ipfile = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		File opfile = new File("C:\\Selenium_1130\\XLProject\\results\\testresult.xlsx");
+		FileInputStream fi = new FileInputStream(ipfile);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		Row row = ws.getRow(1);
+		Cell cell = row.createCell(2);
+		cell.setCellValue("Pass");
+		
+		FileOutputStream fo = new FileOutputStream(opfile);
+		wb.write(fo);
+		wb.close();
+		fi.close();
+		fo.close();
+--------------------------------------------------------------------------------
+Filling Cell color with Green
+--------------------------------------------------------------------------------
+		File ipfile = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		File opfile = new File("C:\\Selenium_1130\\XLProject\\results\\testresult.xlsx");
+		FileInputStream fi = new FileInputStream(ipfile);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		Row row = ws.getRow(1);
+		Cell cell = row.createCell(2);
+		cell.setCellValue("Pass");
+	
+		CellStyle style = wb.createCellStyle();
+		style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		
+		cell.setCellStyle(style);
+		
+		
+		FileOutputStream fo = new FileOutputStream(opfile);
+		wb.write(fo);
+		wb.close();
+		fi.close();
+		fo.close();
+-------------------------------------------------------------------------------
+Filling Cell color with Red
+----------------------------------------------------------------------------------
+		File ipfile = new File("C:\\Selenium_1130\\XLProject\\testdatafiles\\TestData.xlsx");
+		File opfile = new File("C:\\Selenium_1130\\XLProject\\results\\testresult.xlsx");
+		FileInputStream fi = new FileInputStream(ipfile);
+		
+		Workbook wb = new XSSFWorkbook(fi);
+		Sheet ws = wb.getSheet("LoginData");
+		Row row = ws.getRow(2);
+		Cell cell = row.createCell(2);
+		cell.setCellValue("Fail");
+	
+		CellStyle style = wb.createCellStyle();
+		style.setFillForegroundColor(IndexedColors.RED.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		
+		cell.setCellStyle(style);
+		
+		
+		FileOutputStream fo = new FileOutputStream(opfile);
+		wb.write(fo);
+		wb.close();
+		fi.close();
+		fo.close();
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

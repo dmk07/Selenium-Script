@@ -1,0 +1,128 @@
+Script to check a link working or not based on the title of the page
+--------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://facebook.com");
+		driver.findElement(By.linkText("Sign Up")).click();
+		
+		String exptitle,acttitle;
+		exptitle = "sign up for facebook";
+		acttitle= driver.getTitle();
+		if(acttitle.toLowerCase().contains(exptitle))
+		{
+			System.out.println("Sign Up Link Working, Test Pass");
+		}else
+		{
+			System.out.println("Sign Up Link not Working, Test Fail");
+		}
+		
+		driver.close();
+--------------------------------------------------------------------------------------
+Script to verify a link working or not based on the URL of the Page
+-----------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://google.com");
+		driver.findElement(By.linkText("Gmail")).click();
+		
+		String expurl,acturl;
+		expurl="gmail";
+		acturl=driver.getCurrentUrl();
+		if(acturl.toLowerCase().contains(expurl))
+		{
+			System.out.println("GMail Link working, Test Pass");			
+		}else
+		{
+			System.out.println("GMail Link not working, Test Fail");
+		}
+
+------------------------------------------------------------------------------------------
+Script to verify a link working not based on properies of an element
+-------------------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://google.com");
+		driver.findElement(By.linkText("Images")).click();
+		
+		String exptitle,acttitle;
+		exptitle ="Google Images";
+		
+		acttitle= driver.findElement(By.id("hplogo")).getAttribute("title");
+		if(acttitle.equalsIgnoreCase(exptitle))
+		{
+			System.out.println("Test Pass");
+		}else
+		{
+			System.out.println("Test Fail");
+		}
+----------------------------------------------------------------------------------------
+Script to verify a link working or not based on the visibility of an element
+---------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://orangehrm.qedgetech.com");
+		driver.findElement(By.partialLinkText("Forgot")).click();
+		if(driver.findElement(By.xpath("//input[@value='Reset Password']")).isDisplayed())
+		{
+			System.out.println("Forgot Password Link Working, Test Pass");
+		}else
+		{
+			System.out.println("Forgot Password Link not Working, Test Fail");
+		}
+--------------------------------------------------------------------------------------------------------------
+Script to capture all links & their redirected URLS in a page
+-----------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://primusbank.qedgetech.com");
+		driver.findElement(By.linkText("Site Map")).click();
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+		for(int i=0;i<links.size();i++)
+		{
+			String linkname= links.get(i).getText();
+			String linkurl =  links.get(i).getAttribute("href");
+			System.out.println(linkname+"  "+linkurl);
+		}
+-------------------------------------------------------------------------------------
+Alternative Code to capture all links & their redirected URLS in a page
+---------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://primusbank.qedgetech.com");
+		driver.findElement(By.linkText("Site Map")).click();
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+		for(int i=0;i<links.size();i++)
+		{
+			links.get(i).click();
+			String linkname= links.get(i).getText();
+			String pgurl =  driver.getCurrentUrl();
+			System.out.println(linkname+"  "+pgurl);
+			driver.navigate().back();
+			links = driver.findElements(By.tagName("a"));
+			
+		}
+-----------------------------------------------------------------------------------

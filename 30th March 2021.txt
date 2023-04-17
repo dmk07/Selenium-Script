@@ -1,0 +1,21 @@
+Working with textbox Element
+---------------------------------------------------------------------------
+1. Entering some text - sendKeys()
+
+2. Clear Existing Data - clear()
+
+Example:
+--------------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://facebook.com");
+		
+		WebElement uid = driver.findElement(By.id("email"));
+		
+		uid.sendKeys("QEdge");
+		Thread.sleep(2000);
+		uid.clear();
+
+	

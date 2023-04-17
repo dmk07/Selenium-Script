@@ -1,0 +1,19 @@
+Hi All,
+
+Herewith Iam giving a Project Work to build your confidence on TestNG Framework
+
+Task 1: Implement TestNG/Modularity Framework for the following scenarios in Calculator App.
+
+
+Scenario 1: Check Addition
+Scenario 2: Check Subtraction
+Scenario 3: Check Multiplication
+Scenario 4: Check Division
+
+Task 2: Create Test suite by grouping all the above Scenarios.
+
+Appurl : http://calc.qedgetech.com
+
+Best of luck..
+Suresh Babu
+QEdge Tech

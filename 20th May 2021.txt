@@ -1,0 +1,35 @@
+How to Capture Screenshots using Selenium
+-------------------------------------------------------------------------------
+
+ We capture screenshot of webpages during Runtime,
+
+		1. When Test Execution Fails
+	        2. When Some Errors occured during TestRun
+
+---------------------------------------------------------------------------
+Code to capture Screenshot
+---------------------------------------------------------------------------
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();	
+		
+		driver.get("http://facebook.com");				
+		
+		// This Code we write for a failed/Error event
+		
+		File srcfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File destfile = new File("c:\\test\\fb.bmp");
+		
+		FileUtils.copyFile(srcfile, destfile);
+		
+        driver.close();
+
+---------------------------------------------------------------------------------
+
+
+		
+				
+
+
